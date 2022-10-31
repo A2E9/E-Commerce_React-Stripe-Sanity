@@ -8,7 +8,8 @@ const HeroBanner = ({heroBanner}) => {
       <div>
         <p className="beasts-solo">{heroBanner.smallText}</p>
 
-        <h3>{heroBanner.midText}</h3>
+        {/* <h3>{heroBanner.midText}</h3> */}
+        <h3>Valentyn´s Sale</h3>
 
         <h1>{heroBanner.largeText1}</h1>
 
