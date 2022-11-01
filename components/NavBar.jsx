@@ -23,6 +23,12 @@ const NavBar = () => {
         
 
       {showCart && <Cart />}
+
+
+
+
+        
+      {/* <Cart /> */}{/* <Cart /> */}{/* <Cart /> */}{/* <Cart /> */}{/* <Cart /> */}{/* <Cart /> */}
     </div>
   );
 };
