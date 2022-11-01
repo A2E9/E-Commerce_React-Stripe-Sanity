@@ -25,26 +25,6 @@ export const StateContext = ({ children }) => {
     setQty((prev) => (prev == 1 ? prev : prev - 1));
   };
 
-  // const onAdd = (product, quantity) => {
-  //   const existInCart = cartItems.find((item) => item._id === product._id);
-
-  //   setTotalPrice((prevPrice) => prevPrice + product.price * quantity);
-
-  //   setTotalQuantity((prevQty) => prevQty + quantity);
-  //   if (existInCart) {
-  //     const updatedCartItems = cartItems.map((item) =>
-  //       item._id === product._id
-  //         ? { ...cartItems, quantity: existInCart.quantity + quantity }
-  //         : item
-  //     );
-
-  //     setCartItems(updatedCartItems);
-  //   } else {
-  //     setCartItems([...cartItems, { ...product }]); /////////////////////////////
-  //   }
-
-  //   toast.success(`${qty} ${product.name} added to cart.`);
-  // };
   const onAdd = (product, quantity) => {
     const checkProductInCart = cartItems.find((item) => item._id === product._id);
     
