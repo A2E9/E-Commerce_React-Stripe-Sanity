@@ -28,7 +28,7 @@ export const StateContext = ({ children }) => {
   const onAdd = (product, quantity) => {
     const checkProductInCart = cartItems.find((item) => item._id === product._id);
     
-    setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity);
+    setTotalPrice((prevTotalPrice) => Math.round((prevTotalPrice + product.price * quantity) * 100) / 100);
     setTotalQuantity((prevTotalQuantities) => prevTotalQuantities + quantity);
     
     if(checkProductInCart) {
@@ -59,13 +59,13 @@ export const StateContext = ({ children }) => {
         ...newCartItems,
         { ...foundProduct, quantity: foundProduct.quantity + 1 },
       ]);
-      setTotalPrice((prevPrice) => prevPrice + foundProduct.price);
+      setTotalPrice((prevPrice) => Math.round((prevPrice + foundProduct.price) * 100) / 100);
       setTotalQuantity((prevQty) => prevQty + 1);
     } else if (type === "dec") {
       if (foundProduct.quantity > 1) {
         foundProduct.quantity--;
         setTotalQuantity((prevQty) => prevQty - 1);
-        setTotalPrice((prevPrice) => prevPrice - foundProduct.price);
+        setTotalPrice((prevPrice) => Math.round((prevPrice - foundProduct.price) * 100) / 100);
       }
     }
   };
@@ -75,8 +75,7 @@ export const StateContext = ({ children }) => {
     index = cartItems.findIndex((item) => item._id === id);
     setCartItems([...cartItems.slice(0, index), ...cartItems.slice(index + 1)]);
     setTotalPrice(
-      (prevPrice) => prevPrice - foundProduct.price * foundProduct.quantity
-    );
+      (prevPrice) => Math.round((prevPrice - foundProduct.price * foundProduct.quantity) * 100) / 100);
     setTotalQuantity((prevQty) => prevQty - foundProduct.quantity);
     toast.error(`${foundProduct.quantity} ${foundProduct.name}´s removed from cart.`);
   };

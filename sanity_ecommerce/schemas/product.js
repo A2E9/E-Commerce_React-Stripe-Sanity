@@ -33,6 +33,9 @@ export default{
             type:'number',
             // description:'Price in cents',
             // validation: Rule => Rule.min(1000).max(1000000),
+            validation: Rule => Rule.precision(2),
+            
+            
         },
 
         {

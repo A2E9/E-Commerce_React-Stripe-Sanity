@@ -5,6 +5,7 @@ import {
   AiOutlinePlus,
   AiOutlineLeft,
   AiOutlineShopping,
+  AiOutlineConsoleSql,
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 import toast from "react-hot-toast";
@@ -25,18 +26,20 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     const stripe = await getStripe();
-
+    // cartItems.forEach((item) => {
+    //    item.price = item.price.toFixed(2) / 100 * 100;
+    // });
     const response = await fetch("/api/stripe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(cartItems),
     });
 
-    if (response.statusCode === 500) {
-      toast.error(response.message);
+    if (response.statusCode === 500 || !response.ok) {
+      toast.error(response);
       return;
     }
-
+    
     const data = await response.json();
 
     toast.loading("Redirecting to checkout...");

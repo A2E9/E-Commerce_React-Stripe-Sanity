@@ -48,7 +48,7 @@ a {
   position: absolute;
   white-space: nowrap;
   will-change: transform;
-  animation: marquee 15s linear infinite;
+  animation: marquee 35s linear infinite;
   width: 180%;
 }
 .track:hover {
@@ -56,10 +56,10 @@ a {
 }
 @keyframes marquee {
   from {
-    transform: translateX(0);
+    transform: translateX(50%);
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(-90%);
   }
 }
 
